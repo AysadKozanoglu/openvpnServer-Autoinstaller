@@ -257,8 +257,8 @@ else
 	# Get easy-rsa
 	wget -O ~/$EASYRSAVERPACK "https://github.com/AysadKozanoglu/openvpnServer-Autoinstaller/raw/master/ssl_bundle/$EASYRSAVERPACK"
 	tar xzf ~/$EASYRSAVERPACK -C ~/
-	mv ~/EasyRSA-3.0.1/ /etc/openvpn/
-	mv /etc/openvpn/EasyRSA-3.0.1/ /etc/openvpn/easy-rsa/
+	mv ~/$EASYRSAVERPACK/ /etc/openvpn/
+	mv /etc/openvpn/$EASYRSAVERPACK/ /etc/openvpn/easy-rsa/
 	chown -R root:root /etc/openvpn/easy-rsa/
 	rm -rf ~/$EASYRSAVERPACK
 	cd /etc/openvpn/easy-rsa/
