@@ -1,3 +1,16 @@
+# THIS REPO is not maintened anymore
+
+## for current version of openvpn roadwarrior installer see:
+https://github.com/Nyr/openvpn-install
+
+
+
+
+
+
+
+
+
 ## Bulletproof OPENVPN road Warrior full automated installer and client manager script 
 ![](https://img.shields.io/badge/easy-rsa3.1.7-green) ![](https://img.shields.io/badge/openvpn-roadwarior-blue) ![](https://img.shields.io/badge/debian-buster-green) ![](https://img.shields.io/badge/debian-bullseye-green)
 
