@@ -1,5 +1,23 @@
 #!/bin/bash
+#
 # OpenVPN road warrior installer for Debian, Ubuntu and CentOS
+#
+# Copyright 2023 Aysad Kozanoglu
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Description:
 
 # This script will work on Debian, Ubuntu, CentOS and probably other distros
 # of the same families, although no support is offered for them. It isn't
@@ -7,6 +25,8 @@
 # your Debian/Ubuntu/CentOS box. It has been designed to be as unobtrusive and
 # universal as possible.
 
+
+EASYRSAVERPACK=EasyRSA-3.1.7.tgz
 
 # Detect Debian users running the script with "sh" instead of bash
 if readlink /proc/$$/exe | grep -qs "dash"; then
@@ -235,12 +255,12 @@ else
 		rm -rf /etc/openvpn/easy-rsa/
 	fi
 	# Get easy-rsa
-	wget -O ~/EasyRSA-3.0.1.tgz "https://github.com/AysadKozanoglu/openvpnServer-Autoinstaller/raw/master/ssl_bundle/EasyRSA-3.0.1.tgz"
-	tar xzf ~/EasyRSA-3.0.1.tgz -C ~/
+	wget -O ~/$EASYRSAVERPACK "https://github.com/AysadKozanoglu/openvpnServer-Autoinstaller/raw/master/ssl_bundle/$EASYRSAVERPACK"
+	tar xzf ~/$EASYRSAVERPACK -C ~/
 	mv ~/EasyRSA-3.0.1/ /etc/openvpn/
 	mv /etc/openvpn/EasyRSA-3.0.1/ /etc/openvpn/easy-rsa/
 	chown -R root:root /etc/openvpn/easy-rsa/
-	rm -rf ~/EasyRSA-3.0.1.tgz
+	rm -rf ~/$EASYRSAVERPACK
 	cd /etc/openvpn/easy-rsa/
 	# Create the PKI, set up the CA, the DH params and the server + client certificates
 	./easyrsa init-pki
@@ -283,8 +303,8 @@ ifconfig-pool-persist ipp.txt" > /etc/openvpn/server.conf
 		echo 'push "dhcp-option DNS 8.8.4.4"' >> /etc/openvpn/server.conf
 		;;
 		3)
-		echo 'push "dhcp-option DNS 208.67.222.222"' >> /etc/openvpn/server.conf
-		echo 'push "dhcp-option DNS 208.67.220.220"' >> /etc/openvpn/server.conf
+		echo 'push "dhcp-option DNS 1.1.1.1"' >> /etc/openvpn/server.conf
+		echo 'push "dhcp-option DNS 80.80.81.81"' >> /etc/openvpn/server.conf
 		;;
 		4) 
 		echo 'push "dhcp-option DNS 129.250.35.250"' >> /etc/openvpn/server.conf
